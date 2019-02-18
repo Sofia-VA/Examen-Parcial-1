@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center ; background-color: #5BC0BE">
+      <h2 style="color: #FFFFFF">Computadoras y Accesorios</h2>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="buscar()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="favoritos()">
+        <ion-icon name="heart"></ion-icon>
+      </button>
+
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding style="background-color: #0B132B">
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let cpu of cpus" col-4 >
+          <ion-card (click)="verp(cpu)"style="background-color: #A1E887">
+            <img *ngIf="cpu.ad.hasOwnProperty('thumbnail')==true" src="http://img.segundamano.mx/cover/{{cpu.ad.thumbnail.path}}">
+            <img *ngIf="cpu.ad.hasOwnProperty('thumbnail')==false" src="https://static.vecteezy.com/system/resources/previews/000/111/221/non_2x/free-desktop-laptop-vector-illustration.jpg">
+            <ion-card-content>
+              <h1 *ngIf="cpu.ad.hasOwnProperty('subject')"> {{cpu.ad.subject}}</h1>
+              <p>{{cpu.ad.locations[0].locations[0].label}},{{cpu.ad.locations[0].label}}</p>
+              <h2 *ngIf="cpu.ad.hasOwnProperty('list_price')" style="color:rgb(26, 122, 122)"> {{cpu.ad.list_price.label}}</h2>
+            </ion-card-content>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
+</ion-content>

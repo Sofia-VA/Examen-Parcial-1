@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center ; background-color: #5BC0BE">
+      <h2 style="color: #FFFFFF">Mascotas</h2>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="buscar()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="favoritos()">
+        <ion-icon name="heart"></ion-icon>
+      </button>
+
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding style="background-color: #0B132B">
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let pet of pets" col-4 >
+          <ion-card (click)="verp(pet)" style="background-color: #A1E887">
+            <img *ngIf="pet.ad.hasOwnProperty('thumbnail')==true" src="http://img.segundamano.mx/cover/{{pet.ad.thumbnail.path}}">
+            <img *ngIf="pet.ad.hasOwnProperty('thumbnail')==false" src="https://thenypost.files.wordpress.com/2018/10/102318-dogs-color-determine-disesases-life.jpg?quality=90&strip=all&w=618&h=410&crop=1">
+            <ion-card-content>
+              <h1 *ngIf="pet.ad.hasOwnProperty('subject')"> {{pet.ad.subject}}</h1>
+              <p>{{pet.ad.locations[0].locations[0].label}},{{pet.ad.locations[0].label}}</p>
+              <h2 *ngIf="pet.ad.hasOwnProperty('list_price')" style="color:rgb(26, 122, 122)"> {{pet.ad.list_price.label}}</h2>
+            </ion-card-content>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
+</ion-content>
