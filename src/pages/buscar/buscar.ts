@@ -38,6 +38,6 @@ export class BuscarPage {
 
   Ver(item)
   {
-    this.navCtrl.push(this.PPage,{vidcons:item});
+    this.navCtrl.push(this.PPage,{vidcon:item});
   }
 }
